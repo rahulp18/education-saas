@@ -1,1 +1,7 @@
-npx --no -- commitlint --edit $1
+
+npx --no-install commitlint --edit "$1"
+if [ $? -ne 0 ]; then
+  echo "\033[0;31m Commit message did not meet the required format! \033[0m"
+  echo "Please follow the Conventional Commits guidelines. Allowed types: feat, fix, wip, patch, build."
+  exit 1
+fi
